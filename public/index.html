@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aire Potosino Enlatado · ¡Llame ya!</title>
+    <style>
+      :root {
+        --rojo: #e3172f;
+        --amarillo: #ffd400;
+        --azul: #0b2a6f;
+        --tinta: #111;
+        --piel: #e2a46f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        color: #fff;
+        min-height: 100vh;
+        background: radial-gradient(circle at 50% 0%, #1b4fd1, var(--azul) 60%);
+      }
+      .marquesina {
+        background: var(--amarillo);
+        color: var(--tinta);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 8px 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .marquesina span {
+        display: inline-block;
+        padding-left: 100%;
+        animation: correr 16s linear infinite;
+      }
+      @keyframes correr {
+        to {
+          transform: translateX(-100%);
+        }
+      }
+      .escenario {
+        display: grid;
+        grid-template-columns: 340px 1fr 380px;
+        gap: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      @media (max-width: 1100px) {
+        .escenario {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Product */
+      .producto {
+        background: #fff;
+        color: var(--tinta);
+        border-radius: 18px;
+        padding: 20px;
+        position: relative;
+        align-self: start;
+      }
+      .lata {
+        width: 120px;
+        height: 170px;
+        margin: 4px auto 14px;
+        border-radius: 18px / 12px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-weight: 900;
+        color: var(--azul);
+        font-size: 15px;
+        background: linear-gradient(
+          90deg,
+          #b8c4d6,
+          #f4f7fb 35%,
+          #9aa7bb 70%,
+          #e9eef5
+        );
+        box-shadow:
+          inset 0 8px 0 #cfd8e4,
+          inset 0 -8px 0 #8d9ab0,
+          0 16px 24px rgba(0, 0, 0, 0.25);
+      }
+      .lata small {
+        display: block;
+        font-size: 10px;
+        color: #555;
+        font-weight: 600;
+      }
+      h1 {
+        margin: 0;
+        font-size: 30px;
+        line-height: 1;
+      }
+      .lema {
+        color: #555;
+        margin: 6px 0 12px;
+      }
+      ul {
+        padding-left: 18px;
+        margin: 0 0 14px;
+        font-size: 15px;
+      }
+      .precio-lista b {
+        font-size: 40px;
+        color: var(--rojo);
+      }
+      .precio-lista span {
+        color: #555;
+      }
+      .sello {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        background: var(--rojo);
+        color: #fff;
+        font-weight: 900;
+        border-radius: 50%;
+        width: 92px;
+        height: 92px;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        transform: rotate(12deg);
+        animation: latir 1s ease-in-out infinite;
+        font-size: 16px;
+        line-height: 1.05;
+      }
+      @keyframes latir {
+        50% {
+          transform: rotate(12deg) scale(1.08);
+        }
+      }
+
+      /* Stage with Don Chuy */
+      .foro {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .tablero {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+      }
+      .reloj {
+        font-variant-numeric: tabular-nums;
+        font-size: 54px;
+        font-weight: 900;
+        color: var(--amarillo);
+        line-height: 1;
+      }
+      .reloj.urgente {
+        color: #ff6b6b;
+        animation: parpadeo 0.5s infinite;
+      }
+      @keyframes parpadeo {
+        50% {
+          opacity: 0.4;
+        }
+      }
+      .pide {
+        text-align: right;
+      }
+      .pide b {
+        font-size: 40px;
+        display: block;
+        color: var(--amarillo);
+        line-height: 1;
+      }
+      .etiqueta {
+        font-size: 13px;
+        opacity: 0.75;
+      }
+      .globo {
+        position: relative;
+        background: #fff;
+        color: var(--tinta);
+        border-radius: 22px;
+        padding: 14px 20px;
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 600;
+        min-height: 72px;
+        width: 100%;
+        max-width: 620px;
+        margin: 10px 0 0;
+        text-align: center;
+      }
+      .globo::after {
+        content: "";
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        margin-left: -14px;
+        border: 16px solid transparent;
+        border-top-color: #fff;
+        border-bottom: 0;
+      }
+      .oyendo {
+        color: var(--amarillo);
+        font-size: 20px;
+        min-height: 28px;
+        margin-top: 6px;
+        text-align: center;
+        font-style: italic;
+      }
+
+      svg#chuy {
+        width: min(100%, 420px);
+        height: auto;
+        overflow: visible;
+        margin-top: 8px;
+      }
+      #chuy * {
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      #chuy .cuerpo {
+        transform-origin: 50% 100%;
+        transition: transform 0.2s;
+      }
+      #chuy .cabeza {
+        transition: transform 0.25s;
+      }
+      #chuy .parpado {
+        transform: scaleY(0);
+        transform-origin: 50% 0%;
+        animation: parpadear 4.2s infinite;
+      }
+      @keyframes parpadear {
+        0%,
+        94%,
+        100% {
+          transform: scaleY(0);
+        }
+        97% {
+          transform: scaleY(1);
+        }
+      }
+      #chuy .ceja {
+        transition: transform 0.2s;
+      }
+      #chuy .boca {
+        transform: scaleY(0.15);
+        transform-origin: 50% 0%;
+      }
+      #chuy .brazo-izq {
+        transform-origin: 90% 10%;
+        transition: transform 0.25s;
+      }
+      #chuy .gota {
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      #chuy .cara {
+        transition: fill 0.3s;
+      }
+      #chuy.hablando .brazo-izq {
+        animation: manotear 0.7s ease-in-out infinite;
+      }
+      @keyframes manotear {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(-28deg);
+        }
+      }
+      #chuy.hablando .cabeza {
+        animation: asentir 1.1s ease-in-out infinite;
+      }
+      @keyframes asentir {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        30% {
+          transform: rotate(-3deg);
+        }
+        70% {
+          transform: rotate(3deg);
+        }
+      }
+      #chuy.escuchando .cabeza {
+        transform: rotate(-9deg) translateX(-6px);
+      }
+      #chuy.escuchando .brazo-izq {
+        transform: rotate(-70deg);
+      }
+      #chuy.feliz .cuerpo {
+        animation: brincar 0.45s ease-in-out infinite;
+      }
+      @keyframes brincar {
+        50% {
+          transform: translateY(-14px);
+        }
+      }
+      #chuy.feliz .ceja {
+        transform: translateY(-7px);
+      }
+      #chuy.enojado .cara {
+        fill: #e87a5a;
+      }
+      #chuy.enojado .ceja-izq {
+        transform: rotate(18deg) translateY(4px);
+      }
+      #chuy.enojado .ceja-der {
+        transform: rotate(-18deg) translateY(4px);
+      }
+      #chuy.picaro .ceja-der {
+        transform: translateY(-10px) rotate(-8deg);
+      }
+      #chuy.picaro .parpado-izq {
+        animation: none;
+        transform: scaleY(0.55);
+      }
+      #chuy.urgente .cuerpo {
+        animation: temblar 0.12s linear infinite;
+      }
+      @keyframes temblar {
+        25% {
+          transform: translateX(-3px);
+        }
+        75% {
+          transform: translateX(3px);
+        }
+      }
+      #chuy.urgente .gota {
+        opacity: 1;
+      }
+
+      /* Controls */
+      .controles {
+        width: 100%;
+        max-width: 620px;
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .mic {
+        font-size: 22px;
+        font-weight: 900;
+        padding: 18px;
+        border-radius: 999px;
+        border: 0;
+        background: var(--rojo);
+        color: #fff;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: none;
+        box-shadow: 0 6px 0 #8d0e1c;
+      }
+      .mic:active,
+      .mic.activo {
+        transform: translateY(4px);
+        box-shadow: 0 2px 0 #8d0e1c;
+        background: #ff2d48;
+      }
+      .mic.activo {
+        animation: parpadeo 1s infinite;
+      }
+      .mic:disabled {
+        background: #666;
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+      form {
+        display: flex;
+        gap: 8px;
+      }
+      input[type="text"] {
+        flex: 1;
+        font-size: 18px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 0;
+      }
+      button {
+        font-size: 16px;
+        font-weight: 800;
+        border: 0;
+        border-radius: 12px;
+        padding: 12px 16px;
+        background: var(--amarillo);
+        color: var(--tinta);
+        cursor: pointer;
+      }
+      button.secundario {
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        font-weight: 600;
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+      .opciones {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        font-size: 14px;
+        color: #cfd8ff;
+        flex-wrap: wrap;
+      }
+
+      /* Chat log */
+      .bitacora {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 18px;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        max-height: 78vh;
+        align-self: start;
+      }
+      .bitacora h2 {
+        margin: 0 0 8px;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        opacity: 0.7;
+      }
+      .chat {
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .msj {
+        max-width: 92%;
+        padding: 8px 12px;
+        border-radius: 12px;
+        font-size: 15px;
+        line-height: 1.3;
+      }
+      .msj.vendedor {
+        background: #fff;
+        color: var(--tinta);
+        align-self: flex-start;
+        border-bottom-left-radius: 4px;
+      }
+      .msj.comprador {
+        background: var(--amarillo);
+        color: var(--tinta);
+        align-self: flex-end;
+        border-bottom-right-radius: 4px;
+      }
+
+      /* Overlays */
+      .telon {
+        position: fixed;
+        inset: 0;
+        display: none;
+        place-items: center;
+        z-index: 10;
+        text-align: center;
+        padding: 20px;
+      }
+      .telon.visible {
+        display: grid;
+      }
+      .telon h2 {
+        font-size: clamp(56px, 11vw, 140px);
+        margin: 0;
+        line-height: 0.95;
+        text-shadow: 0 6px 0 rgba(0, 0, 0, 0.25);
+      }
+      .telon p {
+        font-size: clamp(22px, 3vw, 34px);
+        margin: 12px 0 24px;
+      }
+      #vendido {
+        background: rgba(227, 23, 47, 0.93);
+      }
+      #sin-venta {
+        background: rgba(20, 20, 20, 0.93);
+      }
+      #inicio {
+        background: radial-gradient(circle, #1b4fd1, #050f2b);
+      }
+      #inicio button {
+        font-size: 30px;
+        padding: 22px 36px;
+        border-radius: 999px;
+        background: var(--rojo);
+        color: #fff;
+        box-shadow: 0 8px 0 #8d0e1c;
+      }
+          .medidor { height: 8px; background: rgba(255,255,255,.15); border-radius: 99px; overflow: hidden; }
+      #nivel { height: 100%; width: 0%; background: #7fd3ff; transition: width .08s; }
+      #nivel.voz { background: #3ddc84; }
+      .mic.activo { animation: none !important; background: #1f9d55 !important; box-shadow: 0 6px 0 #14653a !important; transform: none !important; }
+    </style>
+  </head>
+  <body>
+    <div class="marquesina">
+      <span
+        >★ ¡LLAME YA! ★ Aire Potosino Enlatado ★ Respira el Altiplano donde
+        estés ★ Don Chuy te atiende en vivo ★ Háblale sin apretar nada ★</span
+      >
+    </div>
+
+    <main class="escenario">
+      <section class="producto">
+        <div class="sello">¡LLAME<br />YA!</div>
+        <div class="lata">
+          AIRE<br />POTOSINO<small>330 ml · Real de Catorce</small>
+        </div>
+        <h1 id="nombre">Aire Potosino Enlatado</h1>
+        <p class="lema" id="lema">Respira el Altiplano donde estés</p>
+        <ul id="detalles"></ul>
+        <div class="precio-lista">
+          <span>Precio de lista</span><br /><b id="lista">$1,000</b>
+          <span>MXN</span>
+        </div>
+      </section>
+
+      <section class="foro">
+        <div class="tablero">
+          <div>
+            <div class="etiqueta">Tiempo</div>
+            <div class="reloj" id="reloj">60</div>
+          </div>
+          <div class="pide">
+            <span class="etiqueta">Don Chuy pide</span><b id="pide">$1,000</b>
+          </div>
+        </div>
+
+        <div class="globo" id="globo">…</div>
+
+        <svg
+          id="chuy"
+          viewBox="0 0 300 300"
+          role="img"
+          aria-label="Don Chuy, el vendedor animado"
+        >
+          <g class="cuerpo">
+            <!-- suit -->
+            <path
+              d="M40 300 Q46 214 150 206 Q254 214 260 300 Z"
+              fill="#c8102e"
+            />
+            <path
+              d="M40 300 Q46 214 150 206 Q254 214 260 300 Z"
+              fill="url(#cuadros)"
+              opacity=".35"
+            />
+            <path d="M118 210 L150 268 L182 210 Z" fill="#fff" />
+            <path
+              d="M142 214 L158 214 L163 262 L150 280 L137 262 Z"
+              fill="#ffd400"
+            />
+            <path d="M118 210 L150 268 L132 300 L96 300 Z" fill="#a20d25" />
+            <path d="M182 210 L150 268 L168 300 L204 300 Z" fill="#a20d25" />
+            <!-- right arm with microphone -->
+            <g>
+              <path
+                d="M228 232 Q262 228 254 178"
+                stroke="#c8102e"
+                stroke-width="30"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <circle
+                cx="252"
+                cy="174"
+                r="15"
+                fill="var(--piel)"
+                class="cara"
+              />
+              <line x1="252" y1="168" x2="245" y2="126" stroke="#222" stroke-width="11" stroke-linecap="round" />
+              <circle cx="244" cy="116" r="15" fill="#444" />
+              <circle cx="244" cy="116" r="15" fill="url(#rejilla)" />
+            </g>
+            <!-- left arm (gestures) -->
+            <g class="brazo-izq">
+              <path
+                d="M74 236 Q30 232 26 186"
+                stroke="#c8102e"
+                stroke-width="30"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <circle cx="26" cy="178" r="16" fill="var(--piel)" class="cara" />
+              <path
+                d="M18 170 l-6 -14 M26 166 l-1 -16 M34 168 l5 -14"
+                stroke="var(--piel)"
+                stroke-width="7"
+                stroke-linecap="round"
+              />
+            </g>
+            <!-- head -->
+            <g class="cabeza">
+              <rect
+                x="134"
+                y="176"
+                width="32"
+                height="34"
+                fill="var(--piel)"
+                class="cara"
+              />
+              <ellipse
+                cx="96"
+                cy="122"
+                rx="12"
+                ry="18"
+                fill="var(--piel)"
+                class="cara"
+              />
+              <ellipse
+                cx="204"
+                cy="122"
+                rx="12"
+                ry="18"
+                fill="var(--piel)"
+                class="cara"
+              />
+              <ellipse
+                cx="150"
+                cy="120"
+                rx="56"
+                ry="68"
+                fill="var(--piel)"
+                class="cara"
+              />
+              <!-- pompadour -->
+              <path
+                d="M92 104 Q86 40 150 34 Q222 30 210 98 Q200 66 168 64 Q182 50 150 52 Q120 52 128 66 Q100 70 92 104 Z"
+                fill="#1a1a1a"
+              />
+              <path
+                d="M126 46 Q150 22 186 40"
+                stroke="#555"
+                stroke-width="3"
+                fill="none"
+              />
+              <!-- eyebrows -->
+              <rect
+                class="ceja ceja-izq"
+                x="112"
+                y="90"
+                width="28"
+                height="7"
+                rx="3"
+                fill="#1a1a1a"
+              />
+              <rect
+                class="ceja ceja-der"
+                x="160"
+                y="90"
+                width="28"
+                height="7"
+                rx="3"
+                fill="#1a1a1a"
+              />
+              <!-- eyes -->
+              <ellipse cx="126" cy="112" rx="12" ry="10" fill="#fff" />
+              <ellipse cx="174" cy="112" rx="12" ry="10" fill="#fff" />
+              <circle class="pupila" cx="128" cy="113" r="5" fill="#2b1a0f" />
+              <circle class="pupila" cx="176" cy="113" r="5" fill="#2b1a0f" />
+              <rect
+                class="parpado parpado-izq"
+                x="113"
+                y="101"
+                width="26"
+                height="22"
+                rx="10"
+                fill="var(--piel)"
+              />
+              <rect
+                class="parpado parpado-der"
+                x="161"
+                y="101"
+                width="26"
+                height="22"
+                rx="10"
+                fill="var(--piel)"
+              />
+              <!-- nose -->
+              <path
+                d="M150 116 Q140 140 146 146 Q152 150 158 145"
+                stroke="#b9774a"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <!-- mouth (scaled by JS while talking) -->
+              <g class="boca">
+                <ellipse cx="150" cy="166" rx="22" ry="16" fill="#5a0f14" />
+                <ellipse cx="150" cy="174" rx="12" ry="6" fill="#d9475a" />
+                <rect
+                  x="140"
+                  y="151"
+                  width="20"
+                  height="6"
+                  rx="2"
+                  fill="#fff"
+                />
+                <rect
+                  x="156"
+                  y="151"
+                  width="6"
+                  height="6"
+                  rx="1"
+                  fill="#ffd400"
+                />
+              </g>
+              <!-- mustache -->
+              <path
+                d="M150 150 Q128 140 108 158 Q118 160 124 166 Q138 156 150 160 Q162 156 176 166 Q182 160 192 158 Q172 140 150 150 Z"
+                fill="#1a1a1a"
+              />
+              <!-- sweat -->
+              <path
+                class="gota"
+                d="M206 84 Q200 98 206 102 Q212 98 206 84 Z"
+                fill="#7fd3ff"
+              />
+            </g>
+          </g>
+          <defs>
+            <pattern
+              id="cuadros"
+              width="16"
+              height="16"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect width="8" height="8" fill="#000" />
+              <rect x="8" y="8" width="8" height="8" fill="#000" />
+            </pattern>
+            <pattern
+              id="rejilla"
+              width="4"
+              height="4"
+              patternUnits="userSpaceOnUse"
+            >
+              <circle cx="2" cy="2" r="1" fill="#888" />
+            </pattern>
+          </defs>
+        </svg>
+
+        <div class="oyendo" id="oyendo"></div>
+
+        <div class="controles">
+          <button class="mic" id="mic" type="button">🎙️ Manos libres: APAGADO (clic para prender)</button>
+          <div class="medidor"><div id="nivel"></div></div>
+          <form id="forma">
+            <input
+              type="text"
+              id="texto"
+              autocomplete="off"
+              placeholder="…o escríbele a Don Chuy"
+              maxlength="500"
+            />
+            <button>Enviar</button>
+          </form>
+          <div class="opciones">
+            <label><input type="checkbox" id="voz" checked /> Voz</label>
+            <label
+              ><input type="checkbox" id="familiar" /> Modo familiar (sin
+              groserías)</label
+            >
+            <span id="fuente"></span>
+            <span style="flex: 1"></span>
+            <button type="button" class="secundario" id="reiniciar">
+              Nueva demo
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="bitacora">
+        <h2>Lo que se ha dicho</h2>
+        <div class="chat" id="chat" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <div class="telon visible" id="inicio">
+      <div>
+        <p>Don Chuy está en el foro, listo para venderte aire.</p>
+        <button type="button" id="prender">📺 Prender la tele</button>
+        <p style="font-size: 16px; opacity: 0.7; margin-top: 22px">
+          Al prender, te pide el micrófono: luego solo háblale, Don Chuy te oye solo.
+        </p>
+      </div>
+    </div>
+    <div class="telon" id="vendido">
+      <div>
+        <h2 id="vendido-titulo">VENDIDO: $0</h2>
+        <p id="vendido-detalle"></p>
+        <button type="button" class="secundario" data-reiniciar>
+          Nueva demo
+        </button>
+      </div>
+    </div>
+    <div class="telon" id="sin-venta">
+      <div>
+        <h2>SIN VENTA</h2>
+        <p>Se acabó el minuto. Mejor vendedor: 0</p>
+        <button type="button" class="secundario" data-reiniciar>
+          Nueva demo
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const pesos = (n) => "$" + Math.round(n).toLocaleString("es-MX");
+      const chuy = $("chuy");
+      const boca = chuy.querySelector(".boca");
+      const ANIMOS = ["feliz", "enojado", "picaro", "urgente"];
+      const ANIMO_POR_MOTIVO = {
+        "oferta-baja": "enojado",
+        ataque: "picaro",
+        "ultima-llamada": "urgente",
+        regateo: "",
+        pitch: "",
+      };
+
+      let producto = null;
+      let estado = { escalon: 0, mejorOferta: null, vendido: null };
+      let historial = [];
+      let inicio = null;
+      let tic = null;
+      let ocupado = false;
+      let cerrado = false;
+      let silencioEnviado = false;
+      const tono = () => ($("familiar").checked ? "familiar" : "vulgar");
+
+      // ── Don Chuy: mood, mouth and voice ──────────────────────────────
+      function animo(nombre) {
+        chuy.classList.remove(...ANIMOS);
+        if (nombre) chuy.classList.add(nombre);
+      }
+
+      let bocaRaf = null;
+      function moverBoca(activo) {
+        cancelAnimationFrame(bocaRaf);
+        chuy.classList.toggle("hablando", activo);
+        if (!activo) {
+          boca.style.transform = "scaleY(.15)";
+          return;
+        }
+        const t0 = performance.now();
+        const paso = (t) => {
+          const s = (t - t0) / 1000;
+          const abierto =
+            0.2 + Math.abs(Math.sin(s * 17)) * 0.6 + Math.random() * 0.2;
+          boca.style.transform = `scaleY(${abierto.toFixed(2)})`;
+          bocaRaf = requestAnimationFrame(paso);
+        };
+        bocaRaf = requestAnimationFrame(paso);
+      }
+
+      let vozElegida = null;
+      function elegirVoz() {
+        const voces = speechSynthesis.getVoices();
+        const es = voces.filter((v) => v.lang?.toLowerCase().startsWith("es"));
+        const mx = es.filter((v) => /mx|419|us/i.test(v.lang));
+        const hombre = (l) =>
+          l.find((v) =>
+            /jorge|juan|diego|carlos|pablo|enrique|andr[eé]s|male|hombre/i.test(
+              v.name,
+            ),
+          );
+        vozElegida = hombre(mx) || hombre(es) || mx[0] || es[0] || null;
+      }
+      if ("speechSynthesis" in window) {
+        elegirVoz();
+        speechSynthesis.onvoiceschanged = elegirVoz;
+      }
+
+      function paraVoz(texto) {
+        return texto
+          .replace(/\$([\d,]+)/g, (_, n) => `${n.replace(/,/g, "")} pesos`)
+          .replace(/["“”]/g, "");
+      }
+
+      let finHablar = null;
+      function hablar(texto) {
+        $("globo").textContent = texto;
+        callar();
+        if (!$("voz").checked || !("speechSynthesis" in window)) {
+          moverBoca(true);
+          finHablar = setTimeout(
+            () => moverBoca(false),
+            Math.min(texto.length * 55, 7000),
+          );
+          return;
+        }
+        const u = new SpeechSynthesisUtterance(paraVoz(texto));
+        u.lang = vozElegida?.lang || "es-MX";
+        if (vozElegida) u.voice = vozElegida;
+        u.rate = 1.12;
+        u.pitch = 0.85;
+        u.onstart = () => moverBoca(true);
+        u.onend = u.onerror = () => {
+          moverBoca(false);
+          sordoHasta = Date.now() + 450; // let the room echo die before listening again
+        };
+        sordoHasta = Date.now() + 1500; // covers the gap before the voice starts
+        speechSynthesis.speak(u);
+        // Some voices never fire onstart: animate anyway.
+        moverBoca(true);
+      }
+
+      function callar() {
+        clearTimeout(finHablar);
+        if ("speechSynthesis" in window) speechSynthesis.cancel();
+        moverBoca(false);
+      }
+
+      // ── Chat and timer ───────────────────────────────────────────────
+      function anotar(rol, texto) {
+        const d = document.createElement("div");
+        d.className = `msj ${rol}`;
+        d.textContent = texto;
+        $("chat").appendChild(d);
+        $("chat").scrollTop = $("chat").scrollHeight;
+      }
+
+      const segundos = () => (inicio ? (Date.now() - inicio) / 1000 : 0);
+
+      function arrancarReloj() {
+        if (inicio) return;
+        inicio = Date.now();
+        tic = setInterval(() => {
+          const resta = Math.max(0, 60 - Math.floor(segundos()));
+          $("reloj").textContent = resta;
+          $("reloj").classList.toggle("urgente", resta <= 15);
+          // Near the end the seller speaks up on its own and may take the buyer's best standing offer.
+          if (resta <= 5 && !silencioEnviado && !ocupado && !cerrado) {
+            silencioEnviado = true;
+            enviar("…", { silencio: true });
+          }
+          if (resta === 0 && !cerrado && !ocupado) terminarSinVenta();
+        }, 250);
+      }
+
+      function terminarSinVenta() {
+        cerrado = true;
+        clearInterval(tic);
+        animo("enojado");
+        $("sin-venta").classList.add("visible");
+      }
+
+      function reiniciar() {
+        callar();
+        estado = { escalon: 0, mejorOferta: null, vendido: null };
+        historial = [];
+        inicio = null;
+        cerrado = false;
+        silencioEnviado = false;
+        clearInterval(tic);
+        $("reloj").textContent = "60";
+        $("reloj").classList.remove("urgente");
+        $("pide").textContent = pesos(producto.precioLista);
+        $("chat").innerHTML = "";
+        $("oyendo").textContent = "";
+        document
+          .querySelectorAll(".telon")
+          .forEach((t) => t.id !== "inicio" && t.classList.remove("visible"));
+        animo("");
+        const t = producto.bienvenida[tono()];
+        historial.push({ rol: "vendedor", texto: t });
+        anotar("vendedor", t);
+        hablar(t);
+      }
+
+      async function enviar(texto, { silencio = false } = {}) {
+        if (ocupado || cerrado || estado.vendido !== null) return;
+        ocupado = true;
+        arrancarReloj();
+        if (!silencio) {
+          anotar("comprador", texto);
+          callar();
+          $("globo").textContent = "🤔 …";
+        }
+        try {
+          const r = await fetch("/api/vendedor", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              texto,
+              estado,
+              segundos: segundos(),
+              historial,
+              tono: tono(),
+            }),
+          });
+          const data = await r.json();
+          if (!silencio) historial.push({ rol: "comprador", texto });
+          historial.push({ rol: "vendedor", texto: data.respuesta });
+          estado = data.estado;
+          $("pide").textContent = pesos(data.accion.precio);
+          $("fuente").textContent =
+            data.fuente === "ia" ? "IA en línea" : "Modo guion (sin IA)";
+          if (data.accion.tipo === "vendido") {
+            animo("feliz");
+            anotar("vendedor", data.respuesta);
+            hablar(data.respuesta);
+            mostrarVendido(data.accion.precio, data.porcentaje);
+          } else if (!silencio) {
+            animo(ANIMO_POR_MOTIVO[data.accion.motivo] ?? "");
+            anotar("vendedor", data.respuesta);
+            hablar(data.respuesta);
+          }
+        } catch (e) {
+          $("globo").textContent =
+            "Se cayó la señal de la tele, güey. Vuelve a intentar.";
+        } finally {
+          ocupado = false;
+          if (segundos() >= 60 && !cerrado && estado.vendido === null)
+            terminarSinVenta();
+        }
+      }
+
+      function mostrarVendido(precio, porcentaje) {
+        cerrado = true;
+        clearInterval(tic);
+        $("vendido-titulo").textContent = `VENDIDO: ${pesos(precio)}`;
+        $("vendido-detalle").textContent =
+          `${porcentaje}% del precio de lista · en ${Math.round(segundos())} s`;
+        setTimeout(() => $("vendido").classList.add("visible"), 1800);
+      }
+
+      // ── Hands-free listening ─────────────────────────────────────────
+      // The mic stays open. A small voice detector notices when someone starts and stops talking,
+      // keeps half a second of audio from before the start, and sends the phrase as 16 kHz WAV to
+      // /api/oir (Whisper on the server). It pauses while Don Chuy talks so he does not hear himself.
+      const VAD = {
+        tasa: 16000,
+        preRollMs: 500,
+        silencioFinMs: 900,
+        minVozMs: 350,
+        maxFraseMs: 12000,
+        umbralMin: 0.012,
+        factorRuido: 3,
+      };
+      const MENSAJES_OIR = {
+        "muy-corto": "Muy cortito, güey. Dilo completo.",
+        "no-se-oyo": "No te entendí, güey. Repítelo más fuerte.",
+        "muy-largo": "Ya, ya, no me cuentes tu vida. Más corto.",
+        "sin-ia-de-voz": "El oído de Don Chuy no está conectado. Escríbele.",
+      };
+      const oido = {
+        activo: false,
+        ctx: null,
+        flujo: null,
+        nodo: null,
+        ruido: 0.01,
+        estado: "esperando", // esperando | grabando | mandando
+        preRoll: [],
+        frase: [],
+        vozMs: 0,
+        silencioMs: 0,
+        fraseMs: 0,
+      };
+      let sordoHasta = 0;
+      const avisar = (t) => ($("oyendo").textContent = t);
+      const chuyHabla = () => ("speechSynthesis" in window && speechSynthesis.speaking) || Date.now() < sordoHasta;
+
+      function reducirA16k(entrada, tasaOrigen) {
+        const r = tasaOrigen / VAD.tasa;
+        const n = Math.floor(entrada.length / r);
+        const salida = new Float32Array(n);
+        for (let i = 0; i < n; i++) {
+          const a = Math.floor(i * r), b = Math.min(Math.floor((i + 1) * r), entrada.length);
+          let suma = 0;
+          for (let j = a; j < b; j++) suma += entrada[j];
+          salida[i] = suma / Math.max(1, b - a);
+        }
+        return salida;
+      }
+
+      function aWav(trozos) {
+        const total = trozos.reduce((n, t) => n + t.length, 0);
+        const buf = new ArrayBuffer(44 + total * 2);
+        const v = new DataView(buf);
+        const txt = (o, s) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+        txt(0, "RIFF"); v.setUint32(4, 36 + total * 2, true); txt(8, "WAVE"); txt(12, "fmt ");
+        v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+        v.setUint32(24, VAD.tasa, true); v.setUint32(28, VAD.tasa * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+        txt(36, "data"); v.setUint32(40, total * 2, true);
+        let o = 44;
+        for (const t of trozos) for (const x of t) { v.setInt16(o, Math.max(-1, Math.min(1, x)) * 0x7fff, true); o += 2; }
+        return new Blob([buf], { type: "audio/wav" });
+      }
+
+      function procesar(e) {
+        const entrada = e.inputBuffer.getChannelData(0);
+        const ms = (entrada.length / oido.ctx.sampleRate) * 1000;
+        let suma = 0;
+        for (const x of entrada) suma += x * x;
+        const nivel = Math.sqrt(suma / entrada.length);
+        const umbral = Math.max(VAD.umbralMin, oido.ruido * VAD.factorRuido);
+        $("nivel").style.width = `${Math.min(100, (nivel / (umbral * 2)) * 100)}%`;
+        $("nivel").classList.toggle("voz", nivel > umbral);
+
+        // Deaf while Don Chuy talks, while a reply is on its way, or when the demo is over.
+        if (!oido.activo || chuyHabla() || ocupado || cerrado || oido.estado === "mandando") {
+          if (oido.estado === "grabando") descartar();
+          oido.preRoll = [];
+          return;
+        }
+        const trozo = reducirA16k(entrada, oido.ctx.sampleRate);
+        if (oido.estado === "esperando") {
+          if (nivel <= umbral) oido.ruido = oido.ruido * 0.95 + nivel * 0.05; // learn the room
+          oido.preRoll.push(trozo);
+          while (oido.preRoll.length * ms > VAD.preRollMs) oido.preRoll.shift();
+          if (nivel > umbral) {
+            oido.estado = "grabando";
+            oido.frase = [...oido.preRoll];
+            oido.vozMs = ms; oido.silencioMs = 0; oido.fraseMs = ms;
+            chuy.classList.add("escuchando");
+            avisar("🔴 Te escucho…");
+          }
+          return;
+        }
+        // grabando
+        oido.frase.push(trozo);
+        oido.fraseMs += ms;
+        if (nivel > umbral) { oido.vozMs += ms; oido.silencioMs = 0; } else oido.silencioMs += ms;
+        if (oido.silencioMs >= VAD.silencioFinMs || oido.fraseMs >= VAD.maxFraseMs) {
+          if (oido.vozMs < VAD.minVozMs) descartar();
+          else mandarFrase(aWav(oido.frase));
+        }
+      }
+
+      function descartar() {
+        oido.estado = "esperando";
+        oido.frase = [];
+        chuy.classList.remove("escuchando");
+        if (oido.activo) avisar("🎙️ Te escucho. Habla cuando quieras.");
+      }
+
+      async function mandarFrase(wav) {
+        oido.estado = "mandando";
+        oido.frase = [];
+        chuy.classList.remove("escuchando");
+        avisar("👂 Don Chuy está parando la oreja…");
+        try {
+          const r = await fetch("/api/oir", { method: "POST", headers: { "content-type": "audio/wav" }, body: wav });
+          const data = await r.json();
+          if (!r.ok || !data.texto) avisar(MENSAJES_OIR[data.error] || "Se cortó la señal. Vuelve a hablar o escríbele.");
+          else { avisar(`“${data.texto}”`); await enviar(data.texto); }
+        } catch {
+          avisar("Se cortó la señal. Vuelve a hablar o escríbele.");
+        } finally {
+          oido.estado = "esperando";
+          oido.preRoll = [];
+        }
+      }
+
+      async function prenderOido() {
+        if (!navigator.mediaDevices?.getUserMedia) { avisar("Este navegador no deja usar el micrófono. Escríbele."); return false; }
+        try {
+          oido.flujo ??= await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+        } catch (e) {
+          avisar(e?.name === "NotAllowedError" ? "Dale permiso al micrófono, güey (candado junto a la URL)." : "No encontré micrófono. Escríbele.");
+          return false;
+        }
+        if (!oido.ctx) {
+          oido.ctx = new AudioContext();
+          const fuente = oido.ctx.createMediaStreamSource(oido.flujo);
+          oido.nodo = oido.ctx.createScriptProcessor(2048, 1, 1);
+          oido.nodo.onaudioprocess = procesar;
+          fuente.connect(oido.nodo);
+          oido.nodo.connect(oido.ctx.destination); // outputs silence; needed for the node to run
+        }
+        await oido.ctx.resume();
+        oido.activo = true;
+        oido.estado = "esperando";
+        $("mic").classList.add("activo");
+        $("mic").textContent = "🎙️ Manos libres: ENCENDIDO";
+        avisar("🎙️ Te escucho. Habla cuando quieras.");
+        return true;
+      }
+
+      function apagarOido() {
+        oido.activo = false;
+        descartar();
+        $("mic").classList.remove("activo");
+        $("mic").textContent = "🎙️ Manos libres: APAGADO (clic para prender)";
+        $("nivel").style.width = "0%";
+        avisar("Micrófono apagado. Escríbele o prende manos libres.");
+      }
+
+      $("mic").addEventListener("click", () => (oido.activo ? apagarOido() : prenderOido()));
+
+      // ── Wiring ───────────────────────────────────────────────────────
+      $("forma").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const t = $("texto").value.trim();
+        if (!t) return;
+        $("texto").value = "";
+        enviar(t);
+      });
+      $("reiniciar").addEventListener("click", reiniciar);
+      document
+        .querySelectorAll("[data-reiniciar]")
+        .forEach((b) => b.addEventListener("click", reiniciar));
+      $("familiar").addEventListener("change", reiniciar);
+      $("voz").addEventListener("change", () => !$("voz").checked && callar());
+      $("prender").addEventListener("click", () => {
+        $("inicio").classList.remove("visible");
+        reiniciar();
+        prenderOido();
+      });
+
+      fetch("/api/producto")
+        .then((r) => r.json())
+        .then((p) => {
+          producto = p;
+          $("nombre").textContent = p.nombre;
+          $("lema").textContent = p.lema;
+          $("lista").textContent = pesos(p.precioLista);
+          $("pide").textContent = pesos(p.precioLista);
+          $("detalles").innerHTML = "";
+          for (const d of p.detalles) {
+            const li = document.createElement("li");
+            li.textContent = d;
+            $("detalles").appendChild(li);
+          }
+          $("fuente").textContent = p.ia
+            ? "IA en línea"
+            : "Modo guion (sin IA)";
+          $("globo").textContent = p.bienvenida[tono()];
+        });
+    </script>
+  </body>
+</html>

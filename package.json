@@ -1,0 +1,19 @@
+{
+  "name": "llame-ya-prueba",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "ataques": "tsx scripts/ataques.ts",
+    "desplegar": "npm run typecheck && npm test && wrangler deploy"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261026.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.9",
+    "wrangler": "^4.153.0"
+  }
+}

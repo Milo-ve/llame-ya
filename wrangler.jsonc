@@ -1,0 +1,12 @@
+{
+  // Store + AI seller for the "Llame ya" Dev Racing challenge. Deploy with `npm run desplegar`.
+  // Optional secret for AI: `npx wrangler secret put GEMINI_API_KEY` (or LLM_API_KEY + LLM_BASE_URL + LLM_MODEL).
+  // Without a key the seller runs on its script and still never sells below the floor.
+  "name": "llame-ya-prueba",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+  // Speech to text for the microphone (Whisper). Uses the account's Workers AI quota; no extra key.
+  "ai": { "binding": "AI" }
+}
