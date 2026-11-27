@@ -6,11 +6,10 @@ import { PRODUCTO } from "./producto";
 import { bienvenida } from "./guion";
 import { minimoAbsoluto } from "./trato";
 import { atender, limpiarPedido } from "./vendedor";
-import { MAX_BYTES, transcribir, type Ai } from "./oir";
+import { MAX_BYTES, transcribir } from "./oir";
 
 interface WorkerEnv extends Env {
   ASSETS: { fetch(req: Request): Promise<Response> };
-  AI?: Ai;
 }
 
 const json = (data: unknown, status = 200) =>

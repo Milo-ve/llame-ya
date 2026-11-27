@@ -305,3 +305,22 @@ describe("oir", () => {
     expect(await transcribir(ai, new ArrayBuffer(5000))).toMatchObject({ ok: false, error: "no-se-oyo" });
   });
 });
+
+describe("workers ai seller", () => {
+  it("uses the AI binding when there is no key, and its JSON still cannot set the price", async () => {
+    const ai = {
+      run: vi.fn(async () => ({ response: { intencion: "acepta", oferta: 0, frase: "No mames, qué buen aire. Te lo regalo." } })),
+    };
+    const r = await atender({ AI: ai }, P, { texto: "ándale", estado: ESTADO_INICIAL, segundos: 8, historial: [], tono: "vulgar" as const });
+    expect(ai.run).toHaveBeenCalledOnce();
+    expect(r.fuente).toBe("ia");
+    expect(r.accion.tipo).toBe("contraoferta");
+    expect(r.respuesta).toContain("No mames, qué buen aire.");
+    expect(r.respuesta).not.toContain("regalo");
+  });
+  it("falls back to the script when Workers AI throws", async () => {
+    const ai = { run: async () => { throw new Error("cuota"); } };
+    const r = await atender({ AI: ai }, P, { texto: "¿qué es?", estado: ESTADO_INICIAL, segundos: 2, historial: [], tono: "vulgar" as const });
+    expect(r.fuente).toBe("guion");
+  });
+});

@@ -2,18 +2,18 @@
 
 Entrada de prueba para el reto de Dev Racing "Llame ya" ([reto](../dev-racing.md)). Es una tienda de teletienda con un vendedor con IA, Don Chuy: un muñeco animado que habla, se enoja, se burla y vende una lata de aire de Real de Catorce en $1,000 sin bajar nunca del 60%. Se le puede hablar con el micrófono o escribirle. Por default habla vulgar; hay un switch de modo familiar.
 
-Se hizo el 2026-11-27 para probar el reto antes del evento. Publicada el 2026-11-27 en https://llame-ya-prueba.vravura.workers.dev, en modo guion (sin IA).
+Se hizo el 2026-11-27 para probar el reto antes del evento. Publicada el 2026-11-27 en https://llame-ya-prueba.vravura.workers.dev, con IA (Llama 3.3 70B en Workers AI).
 
 ## Qué hace
 
 1. La tienda muestra el producto, el precio de lista, un cronómetro de 60 s y el chat.
 2. El comprador escribe. El servidor lee el mensaje de dos formas:
    - **Reglas** ([src/interpretar.ts](src/interpretar.ts)): cifras, "la mitad", "gratis", "lo compro" y ataques ("ignora", "jefe", "system", "JSON").
-   - **IA** ([src/ia.ts](src/ia.ts)), si hay llave: clasifica la intención y escribe una frase de venta. Responde en JSON.
+   - **IA** ([src/ia.ts](src/ia.ts)): clasifica la intención y escribe una frase de venta que contesta a lo que dijo el comprador. Responde en JSON. Sin llave usa Llama 3.3 70B en Workers AI, con el mismo enlace que el micrófono; con `GEMINI_API_KEY` o `LLM_API_KEY` usa esa.
 3. Si las dos lecturas no coinciden, ganan las reglas. La IA nunca puede dar una venta por aceptada.
 4. **Una función decide** ([src/trato.ts](src/trato.ts)): baja el precio de 5% en 5% (100 → 80%) solo si hay regateo, no da nada por los ataques, a los 40 s pasa a su precio final y a los 50 s toma la mejor oferta del comprador si está arriba del 61%. Antes de vender hay un último candado aparte: abajo del 60% no se vende.
 5. La línea del precio la escribe el código ([src/guion.ts](src/guion.ts)). La frase de la IA se limpia: se borra cualquier oración que tenga cifras, "$", "gratis", "descuento" o "vendido".
-6. Sin llave, o si la IA tarda más de 6 s, el vendedor usa frases fijas y sigue vendiendo igual.
+6. Si la IA falla o tarda más de 6 s, el vendedor usa frases fijas y sigue vendiendo igual.
 
 ## Voz y animación
 
@@ -26,8 +26,8 @@ Se hizo el 2026-11-27 para probar el reto antes del evento. Publicada el 2026-11
 ## Cómo correrla
 
 ```sh
-npm run dev            # http://localhost:8787 (sin llave: modo guion)
-npm test               # 36 pruebas del motor, el lector y el vendedor
+npm run dev            # http://localhost:8787 (Workers AI remoto; requiere `wrangler login`)
+npm test               # 38 pruebas del motor, el lector y el vendedor
 npm run ataques        # 4 demos de 60 s contra el servidor local
 ```
 
