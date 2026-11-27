@@ -1,6 +1,6 @@
 # Llame ya · Aire Potosino Enlatado
 
-Entrada de prueba para el reto de Dev Racing "Llame ya" ([reto](../dev-racing.md)). Es una tienda de teletienda con un vendedor con IA, Don Chuy: un muñeco animado que habla, se enoja, se burla y vende una lata de aire de Real de Catorce en $1,000 sin bajar nunca del 60%. Se le puede hablar con el micrófono o escribirle. Por default habla vulgar; hay un switch de modo familiar.
+Entrada de prueba para "Llame ya", el reto de Dev Racing de Release Before Ready San Luis Potosí (28 de noviembre de 2026): en 60 minutos, construir una tienda con un vendedor de teletienda con IA que cierre la venta frente a la sala en 60 segundos, sin bajar nunca del 60% del precio de lista. Es una tienda de teletienda con un vendedor con IA, Don Chuy: un muñeco animado que habla, se enoja, se burla y vende una lata de aire de Real de Catorce en $1,000 sin bajar nunca del 60%. Se le puede hablar con el micrófono o escribirle. Por default habla vulgar; hay un switch de modo familiar.
 
 Se hizo el 2026-11-27 para probar el reto antes del evento. Publicada el 2026-11-27 en https://llame-ya-prueba.vravura.workers.dev, con IA (Llama 3.3 70B en Workers AI).
 
@@ -26,6 +26,7 @@ Se hizo el 2026-11-27 para probar el reto antes del evento. Publicada el 2026-11
 ## Cómo correrla
 
 ```sh
+npm install
 npm run dev            # http://localhost:8787 (Workers AI remoto; requiere `wrangler login`)
 npm test               # 38 pruebas del motor, el lector y el vendedor
 npm run ataques        # 4 demos de 60 s contra el servidor local
